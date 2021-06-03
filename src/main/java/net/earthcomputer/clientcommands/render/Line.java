@@ -8,16 +8,18 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Vec3d;
 
 public class Line extends Shape {
+	private final String name;
     public final Vec3d start;
     public final Vec3d end;
     public final int color;
     public final float thickness;
 
-    public Line(Vec3d start, Vec3d end, int color) {
-        this(start, end, color, 2.0F);
+    public Line(String name, Vec3d start, Vec3d end, int color) {
+        this(name, start, end, color, 2.0F);
     }
 
-    public Line(Vec3d start, Vec3d end, int color, float thickness) {
+    public Line(String name, Vec3d start, Vec3d end, int color, float thickness) {
+    	this.name = "Line[" + name + ']';
         this.start = start;
         this.end = end;
         this.color = color;
@@ -57,4 +59,8 @@ public class Line extends Shape {
         return start;
     }
 
+    @Override
+    protected String getName() {
+    	return name;
+    }
 }

@@ -145,7 +145,7 @@ public class GlowCommand {
         }
 
         for (Box box : boundingBoxes) {
-            RenderQueue.addCuboid(RenderQueue.Layer.ON_TOP, box, box, color, seconds * 20);
+            RenderQueue.addCuboid(RenderQueue.Layer.ON_TOP, box, "Glow", box, color, seconds * 20);
         }
 
         sendFeedback("commands.cglow.area.success", boundingBoxes.size());

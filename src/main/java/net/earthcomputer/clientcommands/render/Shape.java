@@ -15,4 +15,5 @@ public abstract class Shape {
 
     public abstract Vec3d getPos();
 
+    protected abstract String getName();
 }

@@ -39,7 +39,7 @@ public class ChorusManipulation {
                 if (chorusGoalFrom != null && chorusGoalTo != null) {
                     ClientPlayerEntity player = MinecraftClient.getInstance().player;
                     assert player != null;
-                    RenderQueue.addCuboid(RenderQueue.Layer.ON_TOP, GOAL_POS_KEY, getTargetArea(player.getPos()), 0xff55ff, 1);
+                    RenderQueue.addCuboid(RenderQueue.Layer.ON_TOP, GOAL_POS_KEY, "Chorus", getTargetArea(player.getPos()), 0xff55ff, 1);
                 }
             }
         });

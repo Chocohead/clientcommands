@@ -21,16 +21,16 @@ public class RenderQueue {
         addQueue.add(new AddQueueEntry(layer, key, shape, life));
     }
 
-    public static void addCuboid(Layer layer, Object key, Vec3d from, Vec3d to, int color, int life) {
-        add(layer, key, new Cuboid(from, to, color), life);
+    public static void addCuboid(Layer layer, Object key, String name, Vec3d from, Vec3d to, int color, int life) {
+        add(layer, key, new Cuboid(name, from, to, color), life);
     }
 
-    public static void addCuboid(Layer layer, Object key, Box cuboid, int color, int life) {
-        add(layer, key, new Cuboid(cuboid, color), life);
+    public static void addCuboid(Layer layer, Object key, String name, Box cuboid, int color, int life) {
+        add(layer, key, new Cuboid(name, cuboid, color), life);
     }
 
-    public static void addLine(Layer layer, Object key, Vec3d from, Vec3d to, int color, int life) {
-        add(layer, key, new Line(from, to, color), life);
+    public static void addLine(Layer layer, Object key, String name, Vec3d from, Vec3d to, int color, int life) {
+        add(layer, key, new Line(name, from, to, color), life);
     }
 
     private static void doAdd(AddQueueEntry entry) {
@@ -66,7 +66,10 @@ public class RenderQueue {
 
     public static void render(Layer layer, MatrixStack matrixStack, VertexConsumerProvider.Immediate vertexConsumerProvider, float delta) {
         if (!queue.containsKey(layer)) return;
-        queue.get(layer).values().forEach(shape -> shape.render(matrixStack, vertexConsumerProvider, delta));
+        queue.get(layer).values().forEach(shape -> {
+        	System.out.println("Drawing ".concat(shape.getName()));
+        	shape.render(matrixStack, vertexConsumerProvider, delta);
+        });
     }
 
     public enum Layer {
